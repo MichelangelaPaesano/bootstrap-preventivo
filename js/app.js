@@ -29,15 +29,23 @@ form.addEventListener ('submit', function (event) {
         analisi: 33.60
     }
 
+    let prezzoFinale;
+
     //qui creo il prezzo finale
     if (prezziOrari[inputLavoro]) {
-        const prezzofinale = prezziOrari[inputLavoro] * inputOre
-         console.log(`Il prezzo finale per il lavoro di ${inputJob} è: ${prezzofinale}€`);
+        const prezzoFinale = prezziOrari[inputLavoro] * inputOre
+         console.log(`Il prezzo finale per il lavoro di ${inputLavoro} è: ${prezzoFinale}€`);
     } else {
         console.log('tipo di lavoro non valido')
     }
 
     //adesso i codici sconto e come applicarli 
+    const codici = ["YHDNU32", "JANJC63", "PWKCN25", "SJDPO96", "POCIE24"]
     
+    if (codici.includes(inputCode)) {
+        const sconto = prezzoFinale * 0.75 
+    } else {
+        console.log('Questo sconto non è valido, il prezzo finale non subirà variazioni')
+    }
 
 })
