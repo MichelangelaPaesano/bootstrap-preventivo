@@ -7,6 +7,7 @@ const lavoro = document.getElementById ('inputLavoro')
 const note = document.getElementById ('inputNote')
 const promotion = document.getElementById ('inputCode')
 const formBusiness = document.getElementById ('prezzo')
+const risultatoFinale = document.getElementById ('risultato')
 
 //seconda cosa dare fare è andare a fare la funzione, ma con attenzione
 //essendoci il form e quindi si deve fare button 
@@ -33,8 +34,8 @@ form.addEventListener ('submit', function (event) {
 
     //qui creo il prezzo finale
     if (prezziOrari[inputLavoro]) {
-        const prezzoFinale = prezziOrari[inputLavoro] * inputOre
-         console.log(`Il prezzo finale per il lavoro di ${inputLavoro} è: ${prezzoFinale}€`);
+        prezzoFinale = prezziOrari[inputLavoro] * inputOre
+        console.log(`Il prezzo finale per il lavoro di ${inputLavoro} è: ${prezzoFinale}€`);
     } else {
         console.log('tipo di lavoro non valido')
     }
@@ -43,9 +44,11 @@ form.addEventListener ('submit', function (event) {
     const codici = ["YHDNU32", "JANJC63", "PWKCN25", "SJDPO96", "POCIE24"]
     
     if (codici.includes(inputCode)) {
-        const sconto = prezzoFinale * 0.75 
+        const sconto = prezzoFinale * 0.75;
+        prezzoFinale -= sconto; 
     } else {
         console.log('Questo sconto non è valido, il prezzo finale non subirà variazioni')
     }
 
+    risultatoFinale.innerHTML = `${prezzoFinale.toFixed(2)}€`;
 })
