@@ -47,7 +47,7 @@ form.addEventListener ('submit', function (event) {
         const sconto = prezzoFinale * 0.75;
         prezzoFinale -= sconto; 
     } else {
-        console.log('Questo sconto non è valido, il prezzo finale non subirà variazioni')
+        alert('Questo sconto non è valido, il prezzo finale non subirà variazioni')
     }
 
     risultatoFinale.innerHTML = `${prezzoFinale.toFixed(2)}€`;
