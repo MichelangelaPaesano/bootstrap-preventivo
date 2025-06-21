@@ -10,7 +10,7 @@ const formBusiness = document.getElementById ('prezzo')
 const risultatoFinale = document.getElementById ('risultato')
 
 //seconda cosa dare fare è andare a fare la funzione, ma con attenzione
-//essendoci il form e quindi si deve fare button 
+//essendoci il form e quindi si deve fare submit
 form.addEventListener ('submit', function (event) {
     event.preventDefault()
     //adesso recuperiamo i valori inseriti nel form 
@@ -44,11 +44,13 @@ form.addEventListener ('submit', function (event) {
     const codici = ["YHDNU32", "JANJC63", "PWKCN25", "SJDPO96", "POCIE24"]
     
     if (codici.includes(inputCode)) {
-        const sconto = prezzoFinale * 0.75;
+        const sconto = prezzoFinale * 0.25;
         prezzoFinale -= sconto; 
-    } else {
+    } else if (inputCode === "") {
+        prezzoFinale
+    } else if (!codici.includes(inputCode)) {
         alert('Questo sconto non è valido, il prezzo finale non subirà variazioni')
-    }
+    } 
 
     risultatoFinale.innerHTML = `${prezzoFinale.toFixed(2)}€`;
 })
